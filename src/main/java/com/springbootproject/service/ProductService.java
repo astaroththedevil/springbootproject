@@ -41,7 +41,7 @@ public class ProductService {
 
     public String deleteAllProducts() {
         repository.deleteAll();
-        return "All records successfully deleted!";
+        return "All products successfully deleted!";
     }
 
     @Transactional
