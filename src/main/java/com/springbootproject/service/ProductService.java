@@ -39,6 +39,11 @@ public class ProductService {
         return "product removed!!" + id;
     }
 
+    public String deleteAllProducts() {
+        repository.deleteAll();
+        return "All records successfully deleted!";
+    }
+
     @Transactional
     public Product updateProduct(Product product, int id) {
         Product existingProduct = repository.findById(id).orElse(null);
