@@ -4,6 +4,7 @@ import com.springbootproject.model.Product;
 import com.springbootproject.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,8 +39,9 @@ public class ProductService {
         return "product removed!!" + id;
     }
 
-    public Product updateProduct(Product product) {
-        Product existingProduct = repository.findById(product.getId()).orElse(null);
+    @Transactional
+    public Product updateProduct(Product product, int id) {
+        Product existingProduct = repository.findById(id).orElse(null);
         existingProduct.setName(product.getName());
         existingProduct.setQuantity(product.getQuantity());
         existingProduct.setPrice(product.getPrice());
